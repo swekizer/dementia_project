@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risk Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Comprehensive Health Risk Assessment</h1>
+
+        <div class="intro">
+            <p>This assessment helps estimate your overall health risk factors. Your responses are
+                confidential and will help your healthcare provider understand your health better.</p>
+            <p><strong>Instructions:</strong> Please fill out all fields marked with an asterisk (*). For other fields,
+                provide information if available.</p>
+        </div>
+
+        <form id="predictionForm">
+            <div class="form-section">
+                <h2>Personal Information</h2>
+
+                <div class="form-group">
+                    <label for="Age" class="required">Age (years)</label>
+                    <input type="number" id="Age" min="0" max="120" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Gender" class="required">Gender</label>
+                    <select id="Gender" required>
+                        <option value="">Please select</option>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Height">Height (cm)</label>
+                    <input type="number" id="Height" min="50" max="250">
+                    <p class="help-text">Example: 170 cm (5'7") or 183 cm (6'0")</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="Weight">Weight (kg)</label>
+                    <input type="number" id="Weight" min="30" max="200">
+                    <p class="help-text">Example: 70 kg (154 lbs) or 80 kg (176 lbs)</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="BMI">Body Mass Index (BMI)</label>
+                    <input type="number" id="BMI" min="10" max="50">
+                    <div class="bmi-calculator">
+                        <p>Not sure about your BMI? You can calculate it by dividing your weight (kg) by your height
+                            squared (m²).</p>
+                        <p>Example: If you weigh 70 kg and are 1.75 m tall, your BMI is 70 ÷ (1.75 × 1.75) = 22.9</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Health Conditions</h2>
+
+                <div class="form-group">
+                    <label for="Diabetic" class="required">Do you have diabetes?</label>
+                    <select id="Diabetic" required>
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Depression_Status">Have you been diagnosed with depression?</label>
+                    <select id="Depression_Status">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Cancer">Have you been diagnosed with cancer?</label>
+                    <select id="Cancer">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Atrial_fibrillation">Do you have an irregular heartbeat (Atrial fibrillation)?</label>
+                    <select id="Atrial_fibrillation">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Renal_disease">Do you have kidney disease?</label>
+                    <select id="Renal_disease">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Heart_Failure">Have you been diagnosed with heart failure?</label>
+                    <select id="Heart_Failure">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Anemia">Have you been diagnosed with anemia (low blood count)?</label>
+                    <select id="Anemia">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Liver_failure">Have you been diagnosed with liver disease?</label>
+                    <select id="Liver_failure">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Acute_Kidney_injury">Have you ever had an acute kidney injury?</label>
+                    <select id="Acute_Kidney_injury">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Dementia">Have you been diagnosed with dementia?</label>
+                    <select id="Dementia">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Health Assessment</h2>
+
+                <div class="form-group">
+                    <label for="Chronic_Health_Conditions">How many chronic health conditions do you have?</label>
+                    <input type="number" id="Chronic_Health_Conditions" min="0" max="10">
+                    <p class="help-text">Count conditions that require ongoing management, like high blood pressure,
+                        arthritis, etc.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="Total_medications">Total number of medications you take regularly</label>
+                    <input type="number" id="Total_medications" min="0" max="50">
+                    <p class="help-text">Include prescription medications, not vitamins or supplements</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="CCI">Charlson Comorbidity Index (CCI)</label>
+                    <input type="number" id="CCI" min="0" max="15">
+                    <p class="help-text">If you don't know this score, leave it blank. Your healthcare provider will
+                        calculate it.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="MMSE">Cognitive ability score (MMSE)</label>
+                    <input type="number" id="MMSE" min="0" max="30">
+                    <p class="help-text">Mini-Mental State Examination score (0-30). If you don't know this score, leave
+                        it blank.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="AlcoholLevel">Average daily alcohol consumption (grams)</label>
+                    <input type="number" id="AlcoholLevel" min="0" max="100">
+                    <p class="help-text">For reference: One standard drink contains about 14 grams of alcohol</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="Medication_History">Have you ever taken medications for mental health
+                        conditions?</label>
+                    <select id="Medication_History">
+                        <option value="">Please select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section medication-section">
+                <h2>Current Medications</h2>
+                <p class="help-text">Please check any medications you are currently taking:</p>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="Antipsychotics">
+                    <label for="Antipsychotics">Antipsychotics (for schizophrenia, bipolar disorder)</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="AntiDepressants">
+                    <label for="AntiDepressants">Antidepressants (for depression, anxiety)</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="Memantine">
+                    <label for="Memantine">Memantine (for Alzheimer's disease)</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="Cholinesterwase_inhibitors">
+                    <label for="Cholinesterwase_inhibitors">Cholinesterase inhibitors (for Alzheimer's disease)</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="Statins">
+                    <label for="Statins">Statins (for cholesterol)</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="Diuretics">
+                    <label for="Diuretics">Diuretics ("water pills" for blood pressure, heart failure)</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="Calcium_Channel_blockers">
+                    <label for="Calcium_Channel_blockers">Calcium Channel Blockers (for blood pressure, heart
+                        conditions)</label>
+                </div>
+            </div>
+
+            <button type="submit">Complete Assessment</button>
+        </form>
+
+        <div id="result" style="display: none;"></div>
+    </div>
+
+</body>
+
+</html>
