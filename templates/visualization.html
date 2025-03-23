@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dementia Data Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='visualization.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="visualization-container">
+        <div class="visualization-header">
+            <h1>Dementia Data Insights</h1>
+            <p>Explore the patterns and relationships in our dementia research data through interactive visualizations
+                and insights.</p>
+        </div>
+
+        <div id="visualization-error" class="visualization-error" style="display: none;"></div>
+
+        <!-- Introduction Section -->
+        <div class="visualization-section">
+            <h2>Understanding Dementia: The Big Picture</h2>
+            <p>Dementia affects millions of people worldwide, with various risk factors and health conditions playing
+                significant roles in its development and progression. Our research aims to identify key patterns and
+                relationships that could help in early detection and better management of dementia.</p>
+
+            <div class="chart-row">
+                <div class="chart-col">
+                    <div class="chart-container">
+                        <canvas id="dementia-prevalence-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-col">
+                    <div class="insight-card primary">
+                        <h3>Key Insight</h3>
+                        <p>Our dataset shows a significant proportion of patients with dementia, allowing us to analyze
+                            various factors that might contribute to its development.</p>
+                    </div>
+                    <div class="insight-card success">
+                        <h3>Research Impact</h3>
+                        <p>Understanding the prevalence helps healthcare providers allocate resources and develop targeted
+                            interventions for at-risk populations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Age Distribution Section -->
+        <div class="visualization-section">
+            <h2>Age and Dementia: A Strong Connection</h2>
+            <p>Age is one of the most significant risk factors for dementia. As we age, the likelihood of developing
+                dementia increases substantially. Our data shows clear patterns in the age distribution of patients with
+                dementia.</p>
+
+            <div class="chart-container">
+                <canvas id="age-distribution-chart"></canvas>
+            </div>
+
+            <div class="insight-card warning">
+                <h3>Critical Finding</h3>
+                <p>The data reveals a sharp increase in dementia cases after age 70, with the highest prevalence in the
+                    80-89 age group. This highlights the importance of cognitive health monitoring in older adults.</p>
+            </div>
+        </div>
+
+        <!-- Risk Factors Section -->
+        <div class="visualization-section">
+            <h2>Risk Factors: What Contributes to Dementia?</h2>
+            <p>Multiple health conditions and lifestyle factors can increase the risk of developing dementia. Our analysis
+                identifies several key risk factors that show strong associations with dementia diagnosis.</p>
+
+            <div class="chart-container">
+                <canvas id="risk-factors-chart"></canvas>
+            </div>
+
+            <div class="chart-row">
+                <div class="chart-col">
+                    <div class="insight-card danger">
+                        <h3>High-Risk Indicators</h3>
+                        <p>Diabetes, heart failure, and atrial fibrillation show particularly strong associations with
+                            dementia in our dataset, suggesting that cardiovascular health plays a crucial role in
+                            cognitive function.</p>
+                    </div>
+                </div>
+                <div class="chart-col">
+                    <div class="insight-card primary">
+                        <h3>Prevention Opportunities</h3>
+                        <p>These findings suggest that managing these conditions effectively could potentially reduce
+                            dementia risk, highlighting the importance of integrated care approaches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cognitive Scores Section -->
+        <div class="visualization-section">
+            <h2>Cognitive Function Assessment</h2>
+            <p>The Mini-Mental State Examination (MMSE) is a widely used tool to assess cognitive function. Scores range
+                from 0 to 30, with lower scores indicating more severe cognitive impairment.</p>
+
+            <div class="chart-container">
+                <canvas id="cognitive-score-chart"></canvas>
+            </div>
+
+            <div class="insight-card success">
+                <h3>Distribution Insight</h3>
+                <p>The distribution of MMSE scores in our dataset provides valuable information about the severity of
+                    cognitive impairment among patients, helping to guide appropriate interventions and care planning.</p>
+            </div>
+        </div>
+
+        <!-- Medication Impact Section -->
+        <div class="visualization-section">
+            <h2>Medications and Dementia</h2>
+            <p>Various medications are used in the treatment and management of dementia and related conditions. Our data
+                shows interesting patterns in medication usage among patients with and without dementia.</p>
+
+            <div class="chart-container">
+                <canvas id="medication-impact-chart"></canvas>
+            </div>
+
+            <div class="chart-row">
+                <div class="chart-col">
+                    <div class="insight-card primary">
+                        <h3>Treatment Patterns</h3>
+                        <p>Medications like Memantine and Cholinesterase inhibitors are specifically used for dementia
+                            treatment, while others like antipsychotics may be prescribed for behavioral symptoms.</p>
+                    </div>
+                </div>
+                <div class="chart-col">
+                    <div class="insight-card warning">
+                        <h3>Important Consideration</h3>
+                        <p>The data suggests that medication management is complex in dementia care, with many patients
+                            taking multiple medications that may interact with each other.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Conditions Section -->
+        <div class="visualization-section">
+            <h2>Chronic Health Conditions</h2>
+            <p>Chronic health conditions often coexist with dementia and may influence its progression and management. Our
+                analysis examines the distribution of these conditions in our patient population.</p>
+
+            <div class="chart-container">
+                <canvas id="health-conditions-chart"></canvas>
+            </div>
+
+            <div class="insight-card danger">
+                <h3>Comorbidity Challenge</h3>
+                <p>The high prevalence of multiple chronic conditions in our dataset highlights the complexity of dementia
+                    care and the need for comprehensive, coordinated healthcare approaches.</p>
+            </div>
+        </div>
+
+        <!-- Machine Learning Section -->
+        <div class="visualization-section">
+            <h2>Predicting Outcomes with Machine Learning</h2>
+            <p>Our research utilizes advanced machine learning algorithms to predict health outcomes based on the various
+                factors we've explored. These predictive models can help identify high-risk individuals and inform
+                personalized care strategies.</p>
+
+            <div class="chart-row">
+                <div class="chart-col">
+                    <div class="insight-card success">
+                        <h3>Model Performance</h3>
+                        <p>Our machine learning models have demonstrated promising accuracy in predicting health outcomes,
+                            particularly when incorporating multiple risk factors and biomarkers.</p>
+                    </div>
+                </div>
+                <div class="chart-col">
+                    <div class="insight-card primary">
+                        <h3>Future Directions</h3>
+                        <p>Ongoing refinement of these models could lead to more precise risk assessment tools for clinical
+                            use, potentially enabling earlier intervention and better outcomes for patients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Section -->
+        <div class="visualization-section">
+            <h2>Connecting the Dots: The Bigger Picture</h2>
+            <p>Our data visualizations and analysis tell a compelling story about dementia - its prevalence, risk factors,
+                and potential management strategies. By understanding these patterns, healthcare providers can develop
+                more effective approaches to prevention, early detection, and treatment.</p>
+
+            <div class="insight-card primary">
+                <h3>Key Takeaways</h3>
+                <p>The complex interplay of age, chronic health conditions, medications, and cognitive function
+                    underscores the need for holistic, patient-centered approaches to dementia care. Our research
+                    continues to explore these relationships to improve outcomes for patients and their families.</p>
+            </div>
+
+            <div class="story-navigation">
+                <a href="/" class="nav-button prev">Return to Assessment</a>
+                <a href="#" class="nav-button next">Explore More Insights</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='visualization.js') }}"></script>
+</body>
+
+</html>
