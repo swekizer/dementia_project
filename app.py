@@ -49,10 +49,14 @@ def predict():
     try:
         data = request.json  # Receive JSON data from frontend
 
-        # Extract and convert input values - now with Dementia attribute included
+        # Process Chronic Health Conditions
+        chronic_conditions = data["Chronic_Health_Conditions"].split(", ")  # Split the comma-separated string
+        chronic_conditions_count = len(chronic_conditions) if "None" not in chronic_conditions else 0
+
+        # Extract and convert input values
         input_features = np.array([[
             float(data["Diabetic"]), float(data["AlcoholLevel"]), float(data["Weight"]), float(data["Age"]), int(data["Gender"]),
-            int(data["Depression_Status"]), int(data["Medication_History"]), int(data["Chronic_Health_Conditions"]),
+            int(data["Depression_Status"]), int(data["Medication_History"]), chronic_conditions_count,  # Use the count of chronic conditions
             int(data["Total_medications"]), int(data["CCI"]), int(data["Cancer"]), int(data["Atrial_fibrillation"]),
             int(data["Renal_disease"]), int(data["Heart_Failure"]), float(data["MMSE"]), float(data["Height"]), float(data["BMI"]),
             int(data["Anemia"]), int(data["Acute_Kidney_injury"]), int(data["Antipsychotics"]), int(data["AntiDepressants"]),

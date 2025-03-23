@@ -160,10 +160,23 @@
                 <h2>Health Assessment</h2>
 
                 <div class="form-group">
-                    <label for="Chronic_Health_Conditions">How many chronic health conditions do you have?</label>
-                    <input type="number" id="Chronic_Health_Conditions" min="0" max="10">
-                    <p class="help-text">Count conditions that require ongoing management, like high blood pressure,
-                        arthritis, etc.</p>
+                    <label for="Chronic_Health_Conditions">Select your chronic health conditions:</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="Chronic_Diabetes">
+                        <label for="Chronic_Diabetes">Diabetes</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="Chronic_Heart_Disease">
+                        <label for="Chronic_Heart_Disease">Heart Disease</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="Chronic_Hypertension">
+                        <label for="Chronic_Hypertension">Hypertension</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="Chronic_None">
+                        <label for="Chronic_None">None</label>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -187,9 +200,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="AlcoholLevel">Average daily alcohol consumption (grams)</label>
-                    <input type="number" id="AlcoholLevel" min="0" max="100">
-                    <p class="help-text">For reference: One standard drink contains about 14 grams of alcohol</p>
+                    <label for="AlcoholLevel">Average daily alcohol consumption (normalized value between 0 and 1)</label>
+                    <input type="number" id="AlcoholLevel" step="0.01" min="0" max="1">
+                    <p class="help-text">Enter a value between 0 and 1. For example, 0.08 represents moderate consumption.</p>
                 </div>
 
                 <div class="form-group">

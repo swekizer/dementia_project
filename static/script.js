@@ -21,15 +21,35 @@ document.addEventListener('DOMContentLoaded', function () {
             return value === "" ? 0 : parseFloat(value);
         }
 
+        // Validate AlcoholLevel input
+        const alcoholLevel = getNumericValue("AlcoholLevel");
+        if (alcoholLevel < 0 || alcoholLevel > 1) {
+            alert("Alcohol consumption must be a normalized value between 0 and 1.");
+            return;
+        }
+
+        // Process Chronic Health Conditions
+        const chronicConditions = [];
+        if (getCheckboxValue("Chronic_Diabetes")) chronicConditions.push("Diabetes");
+        if (getCheckboxValue("Chronic_Heart_Disease")) chronicConditions.push("Heart Disease");
+        if (getCheckboxValue("Chronic_Hypertension")) chronicConditions.push("Hypertension");
+        if (getCheckboxValue("Chronic_None")) chronicConditions.push("None");
+
+        // Ensure at least one chronic condition is selected
+        if (chronicConditions.length === 0) {
+            alert("Please select at least one chronic health condition.");
+            return;
+        }
+
         let formData = {
             Diabetic: getSelectValue("Diabetic"),
-            AlcoholLevel: getNumericValue("AlcoholLevel"),
+            AlcoholLevel: alcoholLevel,
             Weight: getNumericValue("Weight"),
             Age: getNumericValue("Age"),
             Gender: getSelectValue("Gender"),
             Depression_Status: getSelectValue("Depression_Status"),
             Medication_History: getSelectValue("Medication_History"),
-            Chronic_Health_Conditions: getNumericValue("Chronic_Health_Conditions"),
+            Chronic_Health_Conditions: chronicConditions.join(", "), // Send as a comma-separated string
             Total_medications: getNumericValue("Total_medications"),
             CCI: getNumericValue("CCI"),
             Cancer: getSelectValue("Cancer"),
